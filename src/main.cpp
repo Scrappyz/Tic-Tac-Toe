@@ -3,7 +3,7 @@
 
 int main(int argc, char** argv)
 {
-    Board board(3, 3);
+    Board board(3);
     Player p1 = 'O';
     Player p2 = 'X';
     board.print();

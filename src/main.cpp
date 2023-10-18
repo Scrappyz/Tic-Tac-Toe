@@ -1,10 +1,16 @@
 #include <iostream>
-
-using namespace std;
+#include "tictactoe.hpp"
 
 int main(int argc, char** argv)
 {
-    cout << "Hello World" << endl;
+    Board board(3, 3);
+    Player p1 = 'O';
+    Player p2 = 'X';
+    board.print();
+
+    board.play(p1, 1, 1);
+    board.play(p2, 2, 1);
+    board.print();
 
     return 0;
 }

@@ -1,4 +1,6 @@
 *
+!src/
+!src/*
 !CMakeLists.txt
 !docs/
 !docs/*

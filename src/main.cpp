@@ -9,19 +9,20 @@ void print(const std::vector<T>& v)
     }
 }
 
+void clearInputBuffer()
+{
+    std::cin.clear();
+    std::cin.ignore(256, '\n');
+}
+
 int main(int argc, char** argv)
 {
-    Board b(1);
-    Player p1 = 'X';
-    b.print();
-    b.play(p1, 1, 1);
-    b.setSize(3);
-    b.play(p1, 3, 3);
-    b.print();
-    b.setSize(9);
-    b.print();
-    b.clear();
-    b.print();
+    Board board;
+    std::cout << "Enter number of players: ";
+    int number_of_players;
+    std::cin >> number_of_players;
 
+    std::vector<Player> players(number_of_players);
+    
     return 0;
 }

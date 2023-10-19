@@ -1,17 +1,37 @@
 #pragma once
 
 #include <iostream>
+#include <string>
 #include <vector>
 
 class Player {
     private:
+        std::string name;
         char ch;
     public:
-        Player(char c) : ch(c) {}
+        Player() : name(), ch() {}
+        Player(const std::string& n) : name(n), ch() {}
+        Player(char c) : name(), ch(c) {}
+        Player(const std::string& n, char c) : name(n), ch(c) {}
+
+        const std::string& getName() const
+        {
+            return name;
+        }
 
         char getChar() const
         {
             return ch;
+        }
+
+        void setName(const std::string& n)
+        {
+            name = n;
+        }
+
+        void setChar(char ch)
+        {
+            this->ch = ch;
         }
 
         void operator=(char ch)

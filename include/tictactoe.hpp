@@ -24,8 +24,13 @@ class Board {
     private:
         std::vector<std::vector<char>> board;
     public:
-        Board() : board() {}
-        Board(int n) : board(n, std::vector<char>(n, ' ')) {}
+        Board() : board(3, std::vector<char>(3, ' ')) {}
+
+        Board(int n) : board()
+        {
+            setSize(n);
+        }
+
         Board(const std::vector<std::vector<char>>& b) : board() 
         {
             setBoard(b);
@@ -38,6 +43,22 @@ class Board {
             }
 
             board = b;
+        }
+
+        void setSize(int n)
+        {
+            if(n < 1) {
+                throw "[Error] Board size cannot be lesser than 1";
+            }
+
+            if(board.size() == n) {
+                return;
+            }
+
+            for(int i = 0; i < board.size(); i++) {
+                board[i].resize(n, ' ');
+            }
+            board.resize(n, std::vector<char>(n, ' '));
         }
 
         bool play(const Player& p, int x, int y)
@@ -130,6 +151,15 @@ class Board {
             }
 
             return win;
+        }
+
+        void clear()
+        {
+            for(int i = 0; i < board.size(); i++) {
+                for(int j = 0; j < board[0].size(); j++) {
+                    board[i][j] = ' ';
+                }
+            }
         }
 
         void print()

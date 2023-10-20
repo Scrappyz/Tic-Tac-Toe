@@ -79,7 +79,7 @@ int main(int argc, char** argv)
         int turn = 1;
         int i = 0;
         char winner = ' ';
-        while(winner == ' ') {
+        while(winner == ' ' && !board.isFull()) {
             std::cout << "Turn " << turn << ": " << players[i].getName() << std::endl;
             board.print();
 
@@ -102,7 +102,13 @@ int main(int argc, char** argv)
             winner = board.winner();
         }
 
-        std::cout << "The winner is " << characters.at(winner) << "!!" << std::endl;
+        board.print();
+        if(winner == ' ') {
+            std::cout << "Its a draw." << std::endl;
+        } else {
+            std::cout << "The winner is " << characters.at(winner) << "!!" << std::endl;
+        }
+
         std::cout << "Try again (y/n): ";
         std::cin >> ch;
 

@@ -134,3 +134,14 @@ TEST(winner, extra)
     });
     EXPECT_EQ(b.winner(), 'X');
 }
+
+TEST(isFull, isFull)
+{
+    Board b;
+    b.setBoard({
+        {'O', 'X', 'O'},
+        {'X', 'P', 'X'},
+        {'O', 'X', 'O'}
+    });
+    ASSERT_TRUE(b.isFull());
+}

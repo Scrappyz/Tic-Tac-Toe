@@ -1,0 +1,13 @@
+.board {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    height: 300px;
+    width: 300px;
+}
+
+.board .board-btn {
+    color: black;
+    background-color: transparent;
+    border-color: black;
+    font-size: 80px;
+}

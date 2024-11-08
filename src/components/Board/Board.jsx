@@ -1,25 +1,32 @@
-import React from "react"
+import React, {useState} from "react"
 import PropTypes from "prop-types"
-import './Button.css'
+import './Board.css'
 
 function Board(props) {
     const board = [];
+    let template_column = ''
 
     for(let i = 0; i < props.area; i++) {
-        board.push()
+        template_column = template_column.concat('auto')
+        if(i < props.area - 1) {
+            template_column = template_column.concat(' ')
+        }
+    }
+
+    for(let i = 0; i < props.area; i++) {
+        board.push([]);
+        for(let j = 0; j < props.area; j++) {
+            board[i].push(' ');
+        }
     }
 
     return (
-        <div className="board">
-            <button type="button" className="board-btn">1</button>
-            <button type="button" className="board-btn">2</button>
-            <button type="button" className="board-btn">3</button>
-            <button type="button" className="board-btn">4</button>
-            <button type="button" className="board-btn">5</button>
-            <button type="button" className="board-btn">6</button>
-            <button type="button" className="board-btn">7</button>
-            <button type="button" className="board-btn">8</button>
-            <button type="button" className="board-btn">9</button>
+        <div className="board" style={{gridTemplateColumns: template_column}}>
+            {board.map((row) => (
+                row.map((btn) => (
+                    <button type="button" className="board-btn">{btn}</button>
+                ))
+            ))}
         </div>
     );
 }

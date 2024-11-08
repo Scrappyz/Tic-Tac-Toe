@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <Board area={2} />
+      <Board area={3} />
     </>
   )
 }

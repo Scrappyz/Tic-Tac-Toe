@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import './App.css'
 import Board from './components/Board/Board.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [winner, setWinner] = useState(null);
+
+  const getWinner = (winner) => {
+    setWinner(winner);
+  }
 
   return (
     <>
-      <Board area={3} />
+      <Board area={3} checkWinner={getWinner}/>
     </>
   )
 }

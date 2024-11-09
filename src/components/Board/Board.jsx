@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import './Board.css';
 
@@ -16,37 +16,40 @@ function Board(props) {
     const templateRow = Array(props.area).fill(props.rowHeight).join(' ');
 
     const getWinner = () => {
-        let winner = null;
-        for(let i = 0; i < board.length(); i++) {
-            for(let j = 1; j < board.length(); j++) {
-                if(board[i][j] !== board[i][j-1]) {
-                    break;
-                }
+        const size = board.length;
+
+        // Check rows
+        for(let i = 0; i < size; i++) {
+            if (board[i].every(cell => cell === board[i][0] && cell !== ' ')) {
+                return board[i][0];
             }
         }
 
-        for(let j = 0; j < board.length(); j++) {
-            for(let i = 1; i < board.length(); i++) {
-                if(board[i][j] !== board[i-1][j]) {
-                    return null;
-                }
+        // Check columns
+        for(let j = 0; j < size; j++) {
+            if (board.every(row => row[j] === board[0][j] && row[j] !== ' ')) {
+                return board[0][j];
             }
         }
 
-        for(let i = 1; i < board.length(); i++) {
-            let j = i;
-            if(board[i][j] !== board[i-1][j-1]) {
-                return null;
-            }
+        // Check main diagonal
+        if(board.every((row, i) => row[i] === board[0][0] && row[i] !== ' ')) {
+            return board[0][0];
         }
 
-        for(let i = 1; i < board.length(); i++) {
-            let j = i;
-            if(board[i][j] !== board[i-1][j+1]) {
-                return null;
-            }
+        // Check anti-diagonal
+        if(board.every((row, i) => row[size - 1 - i] === board[0][size - 1] && row[size - 1 - i] !== ' ')) {
+            return board[0][size - 1];
         }
-    }
+
+        return null; // No winner
+    };
+
+    // Check for a winner whenever the board updates
+    useEffect(() => {
+        const winner = getWinner();
+        props.checkWinner(winner);
+    }, [board]); // Run effect only when board changes
 
     // Handle button clicks to update board state
     const handleClick = (row, col) => {
@@ -59,10 +62,6 @@ function Board(props) {
         );
 
         setBoard(newBoard);
-
-        
-
-        // Move to the next player, cycling back to the first player if needed
         setPlayer((player + 1) % props.players.length);
     }
 
@@ -87,15 +86,15 @@ Board.propTypes = {
     area: PropTypes.number,
     players: PropTypes.arrayOf(PropTypes.string),
     columnWidth: PropTypes.string,
-    rowHeight: PropTypes.string
+    rowHeight: PropTypes.string,
+    checkWinner: PropTypes.func
 };
 
 Board.defaultProps = {
     area: 3,
     players: ['O', 'X'],
     columnWidth: "100px",
-    rowHeight: "100px",
-    winner: null
+    rowHeight: "100px"
 };
 
 export default Board;

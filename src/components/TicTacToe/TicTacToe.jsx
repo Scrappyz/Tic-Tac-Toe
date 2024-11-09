@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import './TicTacToe.css';
 
 function TicTacToe(props) {
     // Initialize board state as a 2D array of empty strings

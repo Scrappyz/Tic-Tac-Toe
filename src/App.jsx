@@ -6,11 +6,13 @@ function App() {
   const [winner, setWinner] = useState(null);
   const [turnCount, setTurnCount] = useState(1);
 
+  // Callback function to get the current winner
   const getWinner = (winner) => {
     setWinner(winner);
     alert(winner);
   }
 
+  // Callback function to track turn
   const setTurn = (n) => {
     setTurnCount(n);
     alert(turnCount);

@@ -32,7 +32,7 @@ function App() {
 
   return (
     <>
-      <TicTacToe area={2} players={['O', 'X']} checkWinner={getWinner} turnCounter={setTurn} boardStyle={board} buttonStyle={button} />
+      <TicTacToe area={3} players={['O', 'X']} checkWinner={getWinner} turnCounter={setTurn} boardStyle={board} buttonStyle={button} />
     </>
   )
 }

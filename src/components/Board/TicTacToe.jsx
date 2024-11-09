@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import './Board.css';
+import './TicTacToe.css';
 
-function Board(props) {
+function TicTacToe(props) {
     // Initialize board state as a 2D array of empty strings
     const [board, setBoard] = useState(
         Array.from(Array(props.area).fill(), () => Array(props.area).fill(' '))
@@ -91,7 +91,7 @@ function Board(props) {
     );
 }
 
-Board.propTypes = {
+TicTacToe.propTypes = {
     area: PropTypes.number,
     players: PropTypes.arrayOf(PropTypes.string),
     columnWidth: PropTypes.string,
@@ -100,11 +100,11 @@ Board.propTypes = {
     turnCounter: PropTypes.func
 };
 
-Board.defaultProps = {
+TicTacToe.defaultProps = {
     area: 3,
     players: ['O', 'X'],
     columnWidth: "100px",
     rowHeight: "100px"
 };
 
-export default Board;
+export default TicTacToe;

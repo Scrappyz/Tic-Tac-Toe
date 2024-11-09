@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import Board from './components/Board/Board.jsx'
+import TicTacToe from './components/Board/TicTacToe.jsx';
 
 function App() {
   const [winner, setWinner] = useState(null);
@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <Board area={3} players={['O', 'X', 'H']} checkWinner={getWinner} turnCounter={setTurn} />
+      <TicTacToe area={4} players={['O', 'X', 'H']} checkWinner={getWinner} turnCounter={setTurn} />
     </>
   )
 }

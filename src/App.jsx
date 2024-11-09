@@ -31,9 +31,9 @@ function App() {
   }
 
   return (
-    <>
+    <div className='board-container'>
       <TicTacToe area={3} players={['O', 'X']} checkWinner={getWinner} turnCounter={setTurn} boardStyle={board} buttonStyle={button} />
-    </>
+    </div>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import TicTacToe from './components/Board/TicTacToe.jsx';
+import TicTacToe from './components/TicTacToe/TicTacToe.jsx';
 
 function App() {
   const [winner, setWinner] = useState(null);

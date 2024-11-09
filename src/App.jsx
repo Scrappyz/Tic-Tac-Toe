@@ -15,12 +15,24 @@ function App() {
   // Callback function to track turn
   const setTurn = (n) => {
     turn = n;
-    alert(turn);
+    // alert(turn);
+  }
+
+  const board = {
+    height: "200px",
+    width: "200px"
+  }
+
+  const button = {
+    backgroundColor: "transparent",
+    color: "black",
+    borderColor: "purple",
+    fontSize: "80px"
   }
 
   return (
     <>
-      <TicTacToe area={2} players={['O', 'X']} checkWinner={getWinner} turnCounter={setTurn} />
+      <TicTacToe area={2} players={['O', 'X']} checkWinner={getWinner} turnCounter={setTurn} boardStyle={board} buttonStyle={button} />
     </>
   )
 }

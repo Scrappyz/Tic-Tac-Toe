@@ -74,13 +74,22 @@ function TicTacToe(props) {
         setTurnCount(turnCount + 1);
     }
 
+    const boardStyle = {
+        ...props.boardStyle,
+        display: "grid",
+        gridTemplateColumns: templateColumn,
+        gridTemplateRows: templateRow
+    }
+
+    const buttonStyle = props.buttonStyle;
+
     return (
-        <div className="board" style={{ gridTemplateColumns: templateColumn, gridTemplateRows: templateRow }}>
+        <div style={boardStyle}>
             {board.map((row, rowIndex) => (
                 row.map((cell, colIndex) => (
                     <button
                         type="button"
-                        className="board-btn"
+                        style={buttonStyle}
                         onClick={() => handleClick(rowIndex, colIndex)}
                     >
                         {cell}
@@ -97,14 +106,27 @@ TicTacToe.propTypes = {
     columnWidth: PropTypes.string,
     rowHeight: PropTypes.string,
     checkWinner: PropTypes.func,
-    turnCounter: PropTypes.func
+    turnCounter: PropTypes.func,
+    boardStyle: PropTypes.object,
+    buttonStyle: PropTypes.object
 };
 
 TicTacToe.defaultProps = {
     area: 3,
     players: ['O', 'X'],
     columnWidth: "100px",
-    rowHeight: "100px"
+    rowHeight: "100px",
+    boardStyle: {
+        display: "grid",
+        height: "300px",
+        width: "300px"
+    },
+    buttonStyle: {
+        color: "black",
+        backgroundColor: "transparent",
+        borderColor: "black",
+        fontSize: "80px"
+    }
 };
 
 export default TicTacToe;

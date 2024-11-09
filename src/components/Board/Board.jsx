@@ -10,6 +10,8 @@ function Board(props) {
 
     // State for tracking the current player’s turn
     const [player, setPlayer] = useState(0);
+    
+    const [turnCount, setTurnCount] = useState(1);
 
     // Construct the grid template style for the board layout
     const templateColumn = Array(props.area).fill(props.columnWidth).join(' ');
@@ -48,8 +50,14 @@ function Board(props) {
     // Check for a winner whenever the board updates
     useEffect(() => {
         const winner = getWinner();
-        props.checkWinner(winner);
+        if(winner !== null) {
+            props.checkWinner(winner);
+        }
     }, [board]); // Run effect only when board changes
+
+    useEffect(() => {
+        props.turnCounter(turnCount);
+    }, [turnCount]);
 
     // Handle button clicks to update board state
     const handleClick = (row, col) => {
@@ -63,6 +71,7 @@ function Board(props) {
 
         setBoard(newBoard);
         setPlayer((player + 1) % props.players.length);
+        setTurnCount(turnCount + 1);
     }
 
     return (
@@ -87,7 +96,8 @@ Board.propTypes = {
     players: PropTypes.arrayOf(PropTypes.string),
     columnWidth: PropTypes.string,
     rowHeight: PropTypes.string,
-    checkWinner: PropTypes.func
+    checkWinner: PropTypes.func,
+    turnCounter: PropTypes.func
 };
 
 Board.defaultProps = {

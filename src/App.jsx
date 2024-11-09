@@ -3,24 +3,24 @@ import './App.css'
 import TicTacToe from './components/TicTacToe/TicTacToe.jsx';
 
 function App() {
-  const [winner, setWinner] = useState(null);
-  const [turnCount, setTurnCount] = useState(1);
+  let winner = null;
+  let turn = 1;
 
   // Callback function to get the current winner
-  const getWinner = (winner) => {
-    setWinner(winner);
-    alert(winner);
+  const getWinner = (winningPlayer) => {
+    winner = winningPlayer;
+    alert("Winner: " + winner);
   }
 
   // Callback function to track turn
   const setTurn = (n) => {
-    setTurnCount(n);
-    alert(turnCount);
+    turn = n;
+    alert(turn);
   }
 
   return (
     <>
-      <TicTacToe area={4} players={['O', 'X', 'H']} checkWinner={getWinner} turnCounter={setTurn} />
+      <TicTacToe area={2} players={['O', 'X']} checkWinner={getWinner} turnCounter={setTurn} />
     </>
   )
 }

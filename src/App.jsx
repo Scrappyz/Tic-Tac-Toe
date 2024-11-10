@@ -19,19 +19,21 @@ function App() {
   }
 
   const board = {
-    height: "200px",
-    width: "200px"
+    padding: "0px",
+    columnGap: "0px",
+    rowGap: "0px"
   }
 
   const button = {
     backgroundColor: "transparent",
     color: "black",
-    borderColor: "purple",
-    fontSize: "80px"
+    borderColor: "black",
+    fontSize: "80px",
+    textAlign: "center"
   }
 
   return (
-    <div className='board-container'>
+    <div className='frame'>
       <TicTacToe area={3} players={['O', 'X']} checkWinner={getWinner} turnCounter={setTurn} boardStyle={board} buttonStyle={button} />
     </div>
   )

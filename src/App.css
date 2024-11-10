@@ -1,6 +1,8 @@
-.board-container {
+.frame {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 90vh;
+  justify-content: center;
+  height: 100vh;
+  background-color: transparent;
+  margin: 0px;
 }

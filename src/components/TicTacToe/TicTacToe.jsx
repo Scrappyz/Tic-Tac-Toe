@@ -46,9 +46,11 @@ function TicTacToe(props) {
         return null; // No winner
     };
 
+    let winner = null;
+
     // Check for a winner whenever the board updates
     useEffect(() => {
-        const winner = getWinner();
+        winner = getWinner();
         if(winner !== null) {
             props.checkWinner(winner);
         }
@@ -62,6 +64,8 @@ function TicTacToe(props) {
     const handleClick = (row, col) => {
         // If the cell is already filled, do nothing
         if (board[row][col] !== ' ') return;
+
+        if(winner !== null) return;
 
         // Update the board with the current player’s symbol
         const newBoard = board.map((rowArr, i) =>

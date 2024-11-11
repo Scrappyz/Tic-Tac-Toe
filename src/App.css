@@ -6,3 +6,29 @@
   background-color: transparent;
   margin: 0px;
 }
+
+.tictactoe-container {
+  background-color: red;
+  height: 50vh;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15%;
+  background-color: #202020;
+  justify-content: center;
+  width: 50vw;
+}
+
+.turn-container {
+  display: inline-block;
+  background-color: green;
+}
+
+.button-container {
+  display: flex;
+  background-color: blue;
+  justify-content: center;
+  margin-top: 2em;
+}

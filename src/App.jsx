@@ -5,7 +5,7 @@ import TicTacToe from './components/TicTacToe/TicTacToe.jsx';
 function App() {
   let winner = null;
   let turn = 1;
-  const [resetKey, setResetKey] = useState(false);
+  const [resetKey, setResetKey] = useState(0);
 
   // Callback function to get the current winner
   const getWinner = (winningPlayer) => {
@@ -19,8 +19,9 @@ function App() {
     // alert(turn);
   }
 
+  // Updates infinitely
   const resetBoard = () => {
-    setResetKey(true);
+    setResetKey(prev => prev + 1);
   }
 
   const board = {

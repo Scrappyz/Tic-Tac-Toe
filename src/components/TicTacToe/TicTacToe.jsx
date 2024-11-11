@@ -13,8 +13,8 @@ function TicTacToe(props) {
     const [turnCount, setTurnCount] = useState(1);
 
     // Construct the grid template style for the board layout
-    const templateColumn = Array(props.area).fill(props.columnWidth).join(' ');
-    const templateRow = Array(props.area).fill(props.rowHeight).join(' ');
+    const templateColumn = Array(props.area).fill(props.buttonStyle.height).join(' ');
+    const templateRow = Array(props.area).fill(props.buttonStyle.width).join(' ');
 
     const getWinner = () => {
         const size = board.length;
@@ -59,6 +59,12 @@ function TicTacToe(props) {
     useEffect(() => {
         props.turnCounter(turnCount);
     }, [turnCount]);
+
+    useEffect(() => {
+        setBoard(Array.from(Array(props.area).fill(), () => Array(props.area).fill(' ')));
+        setTurnCount(1);
+        setPlayer(0);
+    }, [props.resetKey])
 
     // Handle button clicks to update board state
     const handleClick = (row, col) => {
@@ -106,8 +112,7 @@ function TicTacToe(props) {
 TicTacToe.propTypes = {
     area: PropTypes.number,
     players: PropTypes.arrayOf(PropTypes.string),
-    columnWidth: PropTypes.string,
-    rowHeight: PropTypes.string,
+    resetKey: PropTypes.bool,
     checkWinner: PropTypes.func,
     turnCounter: PropTypes.func,
     boardStyle: PropTypes.object,
@@ -117,8 +122,7 @@ TicTacToe.propTypes = {
 TicTacToe.defaultProps = {
     area: 3,
     players: ['O', 'X'],
-    columnWidth: "100px",
-    rowHeight: "100px",
+    resetKey: false,
     boardStyle: {
         display: "grid",
         height: "300px",

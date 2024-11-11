@@ -5,6 +5,7 @@ import TicTacToe from './components/TicTacToe/TicTacToe.jsx';
 function App() {
   let winner = null;
   let turn = 1;
+  const [resetKey, setResetKey] = useState(false);
 
   // Callback function to get the current winner
   const getWinner = (winningPlayer) => {
@@ -18,10 +19,13 @@ function App() {
     // alert(turn);
   }
 
+  const resetBoard = () => {
+    setResetKey(true);
+  }
+
   const board = {
-    padding: "0px",
-    columnGap: "0px",
-    rowGap: "0px"
+    height: "300px",
+    width: "300px"
   }
 
   const button = {
@@ -31,20 +35,22 @@ function App() {
     borderWith: "20px",
     borderRadius: "3px",
     fontSize: "80px",
-    textAlign: "center"
+    textAlign: "center",
+    height: "100px",
+    width: "100px"
   }
 
   return (
     <div className='frame'>
       <div className="tictactoe-container">
         <div className='game-container'>
-        <TicTacToe area={3} players={['O', 'X']} checkWinner={getWinner} turnCounter={setTurn} boardStyle={board} buttonStyle={button} />
+        <TicTacToe area={3} players={['O', 'X']} resetKey={resetKey} checkWinner={getWinner} turnCounter={setTurn} boardStyle={board} buttonStyle={button} />
           <div className='turn-container'>
             <p>Turn 1</p>
           </div>
         </div>
         <div className='button-container'>
-          <button>Reset</button>
+          <button onClick={() => resetBoard()}>Reset</button>
         </div>
       </div>
     </div>

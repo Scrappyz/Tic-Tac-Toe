@@ -1,10 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import TicTacToe from './components/TicTacToe/TicTacToe.jsx';
 
 function App() {
   let winner = null;
-  let turn = 1;
+  const [turn, setTurn] = useState(1);
   const [resetKey, setResetKey] = useState(0);
 
   // Callback function to get the current winner
@@ -14,12 +14,13 @@ function App() {
   }
 
   // Callback function to track turn
-  const setTurn = (n) => {
-    turn = n;
+  const updateTurn = (n) => {
+    setTurn(n);
     // alert(turn);
   }
 
   // Updates infinitely
+  // Each update triggers a `useEffect` in `TicTacToe`
   const resetBoard = () => {
     setResetKey(prev => prev + 1);
   }
@@ -41,13 +42,22 @@ function App() {
     width: "100px"
   }
 
+  useEffect(() => {
+    const newQueue = [...turnQueue, turn];
+    setTurnQueue(newQueue);
+  }, [turn])
+
+  const [turnQueue, setTurnQueue] = useState([]);
+
   return (
     <div className='frame'>
       <div className="tictactoe-container">
         <div className='game-container'>
-        <TicTacToe area={3} players={['O', 'X']} resetKey={resetKey} checkWinner={getWinner} turnCounter={setTurn} boardStyle={board} buttonStyle={button} />
+        <TicTacToe area={3} players={['O', 'X']} resetKey={resetKey} checkWinner={getWinner} turnCounter={updateTurn} boardStyle={board} buttonStyle={button} />
           <div className='turn-container'>
-            <p>Turn 1</p>
+            {turnQueue.map((val) => (
+              <p>Turn {val}</p>
+            ))}
           </div>
         </div>
         <div className='button-container'>

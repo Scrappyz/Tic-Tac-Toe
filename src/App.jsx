@@ -42,26 +42,17 @@ function App() {
     width: "100px"
   }
 
-  useEffect(() => {
-    const newQueue = [...turnQueue, turn];
-    setTurnQueue(newQueue);
-  }, [turn])
-
-  const [turnQueue, setTurnQueue] = useState([]);
-
   return (
     <div className='frame'>
       <div className="tictactoe-container">
         <div className='game-container'>
         <TicTacToe area={3} players={['O', 'X']} resetKey={resetKey} checkWinner={getWinner} turnCounter={updateTurn} boardStyle={board} buttonStyle={button} />
           <div className='turn-container'>
-            {turnQueue.map((val) => (
-              <p>Turn {val}</p>
-            ))}
+            <p>Turn {turn}</p>
           </div>
         </div>
         <div className='button-container'>
-          <button onClick={() => resetBoard()}>Reset</button>
+          <button className='reset-button' onClick={() => resetBoard()}>Reset</button>
         </div>
       </div>
     </div>

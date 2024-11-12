@@ -46,7 +46,7 @@ function TicTacToe(props) {
         return null; // No winner
     };
 
-    let winner = null;
+    let winner = getWinner();
 
     // Check for a winner whenever the board updates
     useEffect(() => {

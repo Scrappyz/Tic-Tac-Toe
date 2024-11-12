@@ -3,12 +3,12 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: transparent;
+  background-color: #202020;
   margin: 0px;
 }
 
 .tictactoe-container {
-  background-color: red;
+  background-color: transparent;
   height: 50vh;
 }
 
@@ -22,13 +22,24 @@
 }
 
 .turn-container {
-  display: inline-block;
-  background-color: green;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
 }
 
 .button-container {
   display: flex;
-  background-color: blue;
+  background-color: transparent;
   justify-content: center;
   margin-top: 2em;
+}
+
+.reset-button {
+  width: 20%;
+  font-size: 100%;
+  font-family: 'consolas';
+  border-radius: 5px;
+  border-color: white;
+  background-color: #202020;
+  color: wheat;
 }

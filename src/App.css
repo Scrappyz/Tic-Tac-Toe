@@ -23,8 +23,13 @@
 
 .turn-container {
   display: flex;
+  justify-content: center;
   align-items: center;
   background-color: transparent;
+  color: white;
+  font-size: 2em;
+  border-color: white;
+  border-width: 10px;
 }
 
 .button-container {

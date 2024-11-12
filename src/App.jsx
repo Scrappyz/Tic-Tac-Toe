@@ -6,6 +6,7 @@ function App() {
   let winner = null;
   const [turn, setTurn] = useState(1);
   const [resetKey, setResetKey] = useState(0);
+  const [player, setPlayer] = useState(null);
 
   // Callback function to get the current winner
   const getWinner = (winningPlayer) => {
@@ -17,6 +18,10 @@ function App() {
   const updateTurn = (n) => {
     setTurn(n);
     // alert(turn);
+  }
+
+  const updatePlayer = (ch) => {
+    setPlayer(ch);
   }
 
   // Updates infinitely
@@ -46,9 +51,9 @@ function App() {
     <div className='frame'>
       <div className="tictactoe-container">
         <div className='game-container'>
-        <TicTacToe area={3} players={['O', 'X']} resetKey={resetKey} checkWinner={getWinner} turnCounter={updateTurn} boardStyle={board} buttonStyle={button} />
+        <TicTacToe area={3} players={['O', 'X']} currentPlayer={updatePlayer} resetKey={resetKey} checkWinner={getWinner} turnCounter={updateTurn} boardStyle={board} buttonStyle={button} />
           <div className='turn-container'>
-            <p>Turn {turn}</p>
+            <p>Turn {turn}<br></br>Player: {player}</p>
           </div>
         </div>
         <div className='button-container'>

@@ -66,6 +66,10 @@ function TicTacToe(props) {
         setPlayer(0);
     }, [props.resetKey])
 
+    useEffect(() => {
+        props.currentPlayer(props.players[player]);
+    }, [player]);
+
     // Handle button clicks to update board state
     const handleClick = (row, col) => {
         // If the cell is already filled, do nothing
@@ -112,6 +116,7 @@ function TicTacToe(props) {
 TicTacToe.propTypes = {
     area: PropTypes.number,
     players: PropTypes.arrayOf(PropTypes.string),
+    currentPlayer: PropTypes.func,
     resetKey: PropTypes.bool,
     checkWinner: PropTypes.func,
     turnCounter: PropTypes.func,
